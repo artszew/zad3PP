@@ -1,0 +1,1 @@
+#Obsługuje ścieżki /, /add, /delete/<record_id>.
