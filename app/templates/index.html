@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Data Points{% endblock %}
+
+{% block content %}
+<h2>All Data Points</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Width</th>
+        <th>Height</th>
+        <th>Species</th>
+        <th>Action</th>
+    </tr>
+    {% for point in data_points %}
+    <tr>
+        <td>{{ point.id }}</td>
+        <td>{{ point.width }}</td>
+        <td>{{ point.height }}</td>
+        <td>{{ point.species }}</td>
+        <td>
+            <form action="{{ url_for('web.delete_data', record_id=point.id) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('web.add_data') }}">Add Data Point</a>
+{% endblock %}

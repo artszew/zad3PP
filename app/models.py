@@ -1,8 +1,14 @@
-#Definiuje model tabeli w SQLAlchemy.
+# Defines the table model in SQLAlchemy.
 from app import db
 
-class DataPoint(db.Model):
+
+class DataPoints(db.Model):
+    __tablename__ = "data_points"
+
     id = db.Column(db.Integer, primary_key=True)
-    feature1 = db.Column(db.Float, nullable=False)
-    feature2 = db.Column(db.Float, nullable=False)
-    category = db.Column(db.Integer, nullable=False)
+    width = db.Column(db.Float, nullable=False)
+    height = db.Column(db.Float, nullable=False)
+    species = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"<DataPoints id={self.id}, width={self.width}, height={self.height}, species={self.species}>"
